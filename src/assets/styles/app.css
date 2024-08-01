@@ -9,6 +9,19 @@
   --black: #0f0f0f;
   --gray: #6b6b6b;
 
+  /* Primary Colors */
+  --red: hsl(14, 86%, 42%);
+  --green: hsl(159, 69%, 38%);
+
+  --rose-50: hsl(20, 50%, 98%);
+  --rose-100: hsl(13, 31%, 94%);
+  --rose-300: hsl(14, 25%, 72%);
+  --rose-400: hsl(7, 20%, 60%);
+  --rose-500: hsl(12, 20%, 44%);
+  --rose-900: hsl(14, 65%, 9%);
+
+  --cart-icon-color: #c73b0f;
+
   /* Default Measurements */
   --default-border-radius: 1rem;
   --large-border-radius: 2rem;
@@ -33,9 +46,10 @@ div#root {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 0.5rem;
+  gap: 2.25rem;
   width: 100%;
-  margin-block: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 2rem;
 }
 
 .item__img-container {
@@ -59,7 +73,7 @@ div#root {
 
   border: none;
   background-color: var(--white);
-  outline: var(--gray) solid 1px;
+  outline: var(--rose-500) solid 1px;
   padding-block: 0.75rem;
   padding-inline: 1.5rem;
   border-radius: var(--large-border-radius);
@@ -72,4 +86,24 @@ div#root {
 
 .item__button-text {
   font-weight: 500;
+}
+
+.item__info {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item__category {
+  color: var(--rose-400);
+}
+
+.item__name {
+  font-weight: 500;
+}
+
+.item__price {
+  color: var(--cart-icon-color);
+  font-weight: 600;
 }
