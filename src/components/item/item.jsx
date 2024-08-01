@@ -8,10 +8,10 @@ function Item({ items }) {
       {items.map((item, index) => {
         return (
           <div className="item" key={index}>
-            <div className="item__image-container">
+            <picture className="item__img-container">
               <ItemImage imgDimensions={item.image} altText={item.name} />
               <Button />
-            </div>
+            </picture>
             <div className="item__info">
               <ItemBody
                 category={item.category}

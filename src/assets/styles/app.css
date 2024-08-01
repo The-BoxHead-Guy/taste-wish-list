@@ -1,0 +1,45 @@
+@import url("./normalizer.css");
+@import url("./base.css");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+
+:root {
+  /* Neutral Colors */
+  --white: #f5f5f5;
+  --black: #0f0f0f;
+
+  /* Default Measurements */
+  --default-border-radius: 1rem;
+}
+
+div#root {
+  width: 90%;
+  margin: auto;
+}
+
+.products {
+  width: 100%;
+}
+
+.products__title {
+  margin-block: 2rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  width: 100%;
+  margin-block: 1rem;
+}
+
+.item__img-container {
+  width: 100%;
+  position: relative;
+}
+
+.item__img {
+  max-inline-size: 100%;
+  block-size: auto;
+  border-radius: var(--default-border-radius);
+}
