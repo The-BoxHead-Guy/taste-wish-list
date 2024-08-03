@@ -63,6 +63,10 @@ div#root {
   border-radius: var(--default-border-radius);
 }
 
+.item__img--active {
+  outline: var(--cart-icon-color) solid 2px;
+}
+
 /* cart button */
 
 .item__button {
