@@ -1,4 +1,4 @@
-import Item from "./item/item.jsx";
+import ItemList from "./item/ItemList.jsx";
 
 // Importing the data from the project's assets
 import desserts from "../assets/data.json";
@@ -11,7 +11,7 @@ function Options() {
           <h1>Desserts</h1>
         </div>
         <div className="products__list">
-          <Item items={desserts} />
+          <ItemList itemList={desserts} />
         </div>
       </div>
     </>
