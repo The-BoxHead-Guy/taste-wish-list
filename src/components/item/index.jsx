@@ -4,15 +4,12 @@ import ItemBody from "./ItemBody.jsx";
 import ItemImage from "./ItemImage.jsx";
 
 export function Item({ props, index }) {
-  const [activeImgOutline, setActiveImgOutline] = useState("item__img");
+  const [activeImgOutline, setActiveImgOutline] = useState(null);
 
   const verifyButtonState = (buttonState) => {
-    console.log(buttonState);
     buttonState
-      ? setActiveImgOutline("item__img item__img--active")
-      : setActiveImgOutline("item__img");
-
-    return buttonState;
+      ? setActiveImgOutline(() => true)
+      : setActiveImgOutline(() => false);
   };
 
   return (
