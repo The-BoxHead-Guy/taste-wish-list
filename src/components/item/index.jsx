@@ -3,7 +3,7 @@ import Button from "./Button.jsx";
 import ItemBody from "./ItemBody.jsx";
 import ItemImage from "./ItemImage.jsx";
 
-export function Item({ props, index }) {
+export function Item({ props, id }) {
   const [activeImgOutline, setActiveImgOutline] = useState(null);
 
   const verifyButtonState = (buttonState) => {
@@ -14,14 +14,14 @@ export function Item({ props, index }) {
 
   return (
     <>
-      <div className="item" key={index}>
+      <div className="item">
         <picture className="item__img-container">
           <ItemImage
             imgDimensions={props.image}
             altText={props.name}
             onOutline={activeImgOutline}
           />
-          <Button isButtonActive={verifyButtonState} />
+          <Button isButtonActive={verifyButtonState} id={id} />
         </picture>
         <div className="item__info">
           <ItemBody

@@ -1,11 +1,14 @@
 import Options from "./components/options.jsx";
 import Cart from "./components/cart.jsx";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext.jsx";
 
 const App = () => {
   return (
     <>
-      <Options />
-      <Cart />
+      <ShoppingCartProvider>
+        <Options />
+        <Cart />
+      </ShoppingCartProvider>
     </>
   );
 };

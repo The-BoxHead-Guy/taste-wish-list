@@ -1,32 +1,36 @@
-import { useState } from "react";
 import cartIcon from "../../../public/icons/icon-add-to-cart.svg";
 import decrementIcon from "../../../public/icons/icon-decrement-quantity.svg";
 import incrementIcon from "../../../public/icons/icon-increment-quantity.svg";
 
-function Button({ isButtonActive }) {
-  const [amount, setAmount] = useState(0);
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
+function Button({ isButtonActive, id }) {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCartContext();
+
+  const quantity = getItemQuantity(id);
+  console.log(quantity);
+
+  /* Setting the class dynamically */
   let buttonClass;
 
-  !amount
+  !quantity
     ? (buttonClass = "item__button")
     : (buttonClass = "item__button item__button--active");
-  function incrementAmount() {
-    setAmount(amount + 1);
-    isButtonActive(true);
-  }
 
-  function decrementAmount() {
-    setAmount(amount - 1);
-
-    if (amount === 1) {
-      isButtonActive(false);
-    }
-  }
-
-  if (amount === 0) {
+  if (quantity === 0) {
     return (
-      <button className={buttonClass} onClick={incrementAmount}>
+      <button
+        className={buttonClass}
+        onClick={() => {
+          increaseCartQuantity(id);
+          isButtonActive(true);
+        }}
+      >
         <img src={cartIcon} alt="" />
         <span className="item__button-text">Add to cart</span>
       </button>
@@ -35,9 +39,23 @@ function Button({ isButtonActive }) {
 
   return (
     <button className={buttonClass}>
-      <img src={decrementIcon} alt="" onClick={decrementAmount} />
-      <span className="item__button-text">{amount}</span>
-      <img src={incrementIcon} alt="" onClick={incrementAmount} />
+      <img
+        src={decrementIcon}
+        alt=""
+        onClick={() => {
+          decreaseCartQuantity(id);
+          if (quantity === 1) {
+            isButtonActive(false);
+            removeFromCart(id);
+          }
+        }}
+      />
+      <span className="item__button-text">{quantity}</span>
+      <img
+        src={incrementIcon}
+        alt=""
+        onClick={() => increaseCartQuantity(id)}
+      />
     </button>
   );
 }
