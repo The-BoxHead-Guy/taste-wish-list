@@ -13,7 +13,7 @@ function Button({ isButtonActive, id }) {
   } = useShoppingCartContext();
 
   const quantity = getItemQuantity(id);
-  console.log(quantity);
+  // console.log(quantity);
 
   /* Setting the class dynamically */
   let buttonClass;
