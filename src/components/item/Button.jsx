@@ -4,13 +4,8 @@ import incrementIcon from "../../../public/icons/icon-increment-quantity.svg";
 
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
-function Button({ isButtonActive, id }) {
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-  } = useShoppingCartContext();
+function Button({ isButtonActive, id, onIncrease, onDecrease }) {
+  const { getItemQuantity, removeFromCart } = useShoppingCartContext();
 
   const quantity = getItemQuantity(id);
   // console.log(quantity);
@@ -27,7 +22,7 @@ function Button({ isButtonActive, id }) {
       <button
         className={buttonClass}
         onClick={() => {
-          increaseCartQuantity(id);
+          onIncrease(id);
           isButtonActive(true);
         }}
       >
@@ -43,7 +38,7 @@ function Button({ isButtonActive, id }) {
         src={decrementIcon}
         alt=""
         onClick={() => {
-          decreaseCartQuantity(id);
+          onDecrease(id);
           if (quantity === 1) {
             isButtonActive(false);
             removeFromCart(id);
@@ -51,11 +46,7 @@ function Button({ isButtonActive, id }) {
         }}
       />
       <span className="item__button-text">{quantity}</span>
-      <img
-        src={incrementIcon}
-        alt=""
-        onClick={() => increaseCartQuantity(id)}
-      />
+      <img src={incrementIcon} alt="" onClick={() => onIncrease(id)} />
     </button>
   );
 }

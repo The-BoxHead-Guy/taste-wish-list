@@ -10,14 +10,19 @@ export function ShoppingCartProvider({ children }) {
   /* We create the state of the cartItems in the context */
   const [cartItems, setCartItems] = useState([]);
 
+  const cartQuantity = cartItems.reduce(
+    (quantity, currentItem) => quantity + currentItem.quantity,
+    0
+  );
+
   function getItemQuantity(id) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(id) {
+  function increaseCartQuantity(id, name, price, category) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) === undefined) {
-        return [...currItems, { id, quantity: 1 }];
+        return [...currItems, { id, quantity: 1, name, price, category }];
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
@@ -60,6 +65,7 @@ export function ShoppingCartProvider({ children }) {
         decreaseCartQuantity,
         removeFromCart,
         cartItems,
+        cartQuantity,
       }}
     >
       {children}
