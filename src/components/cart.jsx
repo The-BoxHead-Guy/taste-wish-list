@@ -1,9 +1,11 @@
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
+import { useEffect, useState } from "react";
+import { formatCurrency } from "../utilities/formatCurrency";
+import CartItem from "./cart/CartItem";
 
 function Cart() {
-  const { cartItems } = useShoppingCartContext();
-
-  console.log(cartItems);
+  const { cartItems, cartQuantity, removeFromCart, cartTotalPrice } =
+    useShoppingCartContext();
 
   const EmptyCartDisplay = () => {
     return (
@@ -21,25 +23,14 @@ function Cart() {
           {cartItems.map((item) => {
             return (
               <>
-                <div className="cart__item" key={item.id}>
-                  <div className="cart__item-info">
-                    <h3 className="cart__item-name">test name</h3>
-                    <span className="item__amount">2x</span>
-                    <span className="item__unit-price">$5.00</span>
-                    <span className="item__total-price">$10.00</span>
-                  </div>
-                  <div className="cart__button-container">
-                    <img src="../../public/icons/icon-remove-item.svg" alt="" />
-                  </div>
-                </div>
-                <hr />
+                <CartItem itemInfo={item} removeFromCart={removeFromCart} />
               </>
             );
           })}
         </div>
         <div className="cart__total">
           <p>Order Total</p>
-          <span className="cart__cost">$20.00</span>
+          <span className="cart__cost">{formatCurrency(cartTotalPrice)}</span>
         </div>
         <div className="cart__cm-msg-container">
           <img src="../../public/icons/icon-carbon-neutral.svg" alt="" />
@@ -58,7 +49,7 @@ function Cart() {
     <>
       <div className="cart">
         <div className="cart__title-container">
-          <h2 className="cart__title">Your Cart (0)</h2>
+          <h2 className="cart__title">Your Cart ({cartQuantity})</h2>
         </div>
         <div className="cart__preview">
           {cartItems.length === 0 ? <EmptyCartDisplay /> : <CartDisplay />}

@@ -16,7 +16,13 @@ export function Item({ props, id }) {
   };
 
   function handleIncreaseCartQuantity(id) {
-    increaseCartQuantity(id, props.name, props.price, props.category);
+    increaseCartQuantity(
+      id,
+      props.name,
+      props.price,
+      props.category,
+      props.image.thumbnail
+    );
   }
 
   function handleDecreaseCartQuantity(id) {
