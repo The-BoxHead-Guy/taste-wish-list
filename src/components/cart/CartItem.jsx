@@ -15,11 +15,16 @@ function CartItem({ itemInfo, removeFromCart }) {
           </span>
         </div>
         <div className="cart__button-container">
-          <img
-            src="../../public/icons/icon-remove-item.svg"
-            alt=""
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            fill="#CAAFA7"
+            viewBox="0 0 10 10"
             onClick={() => removeFromCart(itemInfo.id)}
-          />
+          >
+            <path d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z" />
+          </svg>
         </div>
       </div>
       <hr />

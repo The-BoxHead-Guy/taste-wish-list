@@ -21,15 +21,16 @@
   --rose-900: hsl(14, 65%, 9%);
 
   --cart-icon-color: #c73b0f;
+  --cart-icon-color-active: #ac330e;
 
   /* Default Measurements */
-  --default-border-radius: 1rem;
-  --large-border-radius: 2rem;
+  --default-border-radius: 0.5rem;
+  --large-border-radius: calc(var(--default-border-radius) * 3);
 
   /* Typography */
   --cart-fs: calc(0.75rem + 0.45vw);
   --cart-title-fs: calc(1rem + 0.4vw);
-  --cart-fs-total: calc(1.5rem + 0.5vw);
+  --cart-fs-total: calc(1.25rem + 0.5vw);
 }
 
 div#root {
@@ -99,6 +100,10 @@ div#root {
   &:active,
   &:hover {
     color: var(--cart-icon-color);
+  }
+
+  &:active {
+    outline: var(--cart-icon-color) solid 1px;
   }
 }
 
@@ -260,13 +265,20 @@ div#root {
     height: auto;
     text-align: center;
 
-    & img {
+    & svg {
       height: auto;
       width: 0.85rem;
       border-radius: 50%;
       border: 2px solid var(--rose-300);
       padding: 0.2rem;
       cursor: pointer;
+      transition: all 0.1s ease;
+
+      &:hover {
+        fill: var(--rose-500);
+        border-color: var(--rose-500);
+        transform: scale(0.9);
+      }
     }
   }
 }
@@ -330,6 +342,17 @@ p {
     color: var(--white);
     font-weight: 600;
     font-size: calc(var(--cart-fs-total) - 0.5rem);
+
+    transition: all 0.05s ease-in-out;
+
+    &:hover {
+      background-color: var(--cart-icon-color-active);
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 }
 
