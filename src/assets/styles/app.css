@@ -578,6 +578,7 @@ p {
     flex-flow: column nowrap;
     justify-content: flex-start;
     border-radius: 0.75rem;
+    z-index: 2;
   }
 
   .order-confirmation__preview {
@@ -592,6 +593,16 @@ p {
 
   .cart__cm-msg-container {
     width: 85%;
+  }
+
+  .overlay--active {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
 }
 
