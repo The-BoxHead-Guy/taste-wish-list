@@ -565,6 +565,34 @@ p {
     padding-inline: 1rem;
     width: 60%;
   }
+
+  .order-confirmation__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90%, 32rem);
+    height: 55%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    border-radius: 0.75rem;
+  }
+
+  .order-confirmation__preview {
+    width: 100%;
+    flex: 1 1 auto;
+    max-height: 100%;
+  }
+
+  .order-confirmation__total {
+    font-size: 1.25rem;
+  }
+
+  .cart__cm-msg-container {
+    width: 85%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -578,6 +606,12 @@ p {
 
   .cart {
     width: 35%;
+  }
+
+  .order-confirmation__container {
+    & p {
+      font-size: 1.125rem;
+    }
   }
 }
 
