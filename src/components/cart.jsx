@@ -1,11 +1,16 @@
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
-import { useEffect, useState } from "react";
 import { formatCurrency } from "../utilities/formatCurrency";
 import CartItem from "./cart/CartItem";
+import ConfirmationButton from "./util/Button";
 
 function Cart() {
-  const { cartItems, cartQuantity, removeFromCart, cartTotalPrice } =
-    useShoppingCartContext();
+  const {
+    cartItems,
+    cartQuantity,
+    removeFromCart,
+    cartTotalPrice,
+    handleConfirmationClick,
+  } = useShoppingCartContext();
 
   const EmptyCartDisplay = () => {
     return (
@@ -39,7 +44,12 @@ function Cart() {
           </p>
         </div>
         <div className="cart__btn-container">
-          <button className="cart__button">Confirm Order</button>
+          <ConfirmationButton
+            onButtonClick={handleConfirmationClick}
+            className={"cart__button"}
+          >
+            Confirm Order
+          </ConfirmationButton>
         </div>
       </>
     );

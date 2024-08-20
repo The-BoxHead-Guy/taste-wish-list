@@ -9,6 +9,11 @@ export function useShoppingCartContext() {
 export function ShoppingCartProvider({ children }) {
   /* We create the state of the cartItems in the context */
   const [cartItems, setCartItems] = useState([]);
+  const [toggleConfirmation, setToggleConfirmation] = useState(false);
+
+  const handleConfirmationClick = () => {
+    setToggleConfirmation(!toggleConfirmation);
+  };
 
   const cartTotalPrice = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity;
@@ -74,6 +79,8 @@ export function ShoppingCartProvider({ children }) {
         cartItems,
         cartQuantity,
         cartTotalPrice,
+        handleConfirmationClick,
+        toggleConfirmation,
       }}
     >
       {children}
