@@ -4,12 +4,22 @@ import incrementIcon from "../../../public/icons/icon-increment-quantity.svg";
 
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
+import { useEffect } from "react";
+
 function Button({ isButtonActive, id, onIncrease, onDecrease }) {
-  const { getItemQuantity, removeFromCart } = useShoppingCartContext();
+  const { getItemQuantity, removeFromCart, cartItems } =
+    useShoppingCartContext();
+
+  /* Resetting the img outline order is confirmed*/
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      document
+        .querySelectorAll(".item__img--active")
+        .forEach((item) => isButtonActive(false));
+    }
+  }, [cartItems]);
 
   const quantity = getItemQuantity(id);
-  // console.log(quantity);
-
   /* Setting the class dynamically */
   let buttonClass;
 

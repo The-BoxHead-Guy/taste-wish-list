@@ -6,7 +6,7 @@ function ItemImage({ imgDimensions, altText, onOutline }) {
       <img
         src={imgDimensions.mobile}
         alt={altText}
-        className={`item__img ${onOutline ? "item__img--active" : null}`}
+        className={`item__img ${onOutline ? "item__img--active" : ""}`}
         loading="lazy"
       />
     </>
