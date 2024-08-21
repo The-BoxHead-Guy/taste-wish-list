@@ -10,38 +10,27 @@ function OrderConfirmation() {
     cartTotalPrice,
     toggleConfirmation,
     handleConfirmationClick,
+    resetOrder,
   } = useShoppingCartContext();
-
-  useEffect(() => {
-    const orderConfirmationDisplay = document.querySelector(
-      ".order-confirmation__container"
-    );
-
-    if (!toggleConfirmation) {
-      orderConfirmationDisplay.classList.add(
-        "order-confirmation__container--hidden"
-      );
-    }
-
-    return () =>
-      orderConfirmationDisplay.classList.remove(
-        "order-confirmation__container--hidden"
-      );
-  }, [toggleConfirmation]);
 
   return (
     <>
-      <div className="order-confirmation__container">
-        <img src={checkmark} alt="" />
-        <OrderMessage>We hope you enjoy your food</OrderMessage>
-        <OrderPreviewList data={cartItems} cartTotalPrice={cartTotalPrice} />
-        <ConfirmationButton
-          onButtonClick={handleConfirmationClick}
-          className={"cart__button preview__button"}
-        >
-          Start New Order
-        </ConfirmationButton>
-      </div>
+      {toggleConfirmation && (
+        <div className="order-confirmation__container">
+          <img src={checkmark} alt="" />
+          <OrderMessage>We hope you enjoy your food</OrderMessage>
+          <OrderPreviewList data={cartItems} cartTotalPrice={cartTotalPrice} />
+          <ConfirmationButton
+            onButtonClick={() => {
+              handleConfirmationClick();
+              resetOrder();
+            }}
+            className={"cart__button preview__button"}
+          >
+            Start New Order
+          </ConfirmationButton>
+        </div>
+      )}
     </>
   );
 }

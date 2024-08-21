@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createContext, useState, useContext } from "react";
 
 const ShoppingCartContext = createContext({});
@@ -13,6 +14,10 @@ export function ShoppingCartProvider({ children }) {
 
   const handleConfirmationClick = () => {
     setToggleConfirmation(!toggleConfirmation);
+  };
+
+  const resetOrder = () => {
+    setCartItems([]);
   };
 
   const cartTotalPrice = cartItems.reduce((total, item) => {
@@ -81,6 +86,7 @@ export function ShoppingCartProvider({ children }) {
         cartTotalPrice,
         handleConfirmationClick,
         toggleConfirmation,
+        resetOrder,
       }}
     >
       {children}

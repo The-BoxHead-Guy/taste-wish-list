@@ -464,7 +464,7 @@ p {
 
 .order-confirmation__preview {
   width: 100%;
-  max-height: 16rem;
+  max-height: 32rem;
   background-color: var(--perl-white);
   overflow-y: auto;
   display: flex;
@@ -582,9 +582,7 @@ p {
   }
 
   .order-confirmation__preview {
-    width: 100%;
     flex: 1 1 auto;
-    max-height: 100%;
   }
 
   .order-confirmation__total {
